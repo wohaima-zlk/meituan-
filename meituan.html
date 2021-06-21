@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入boot文件 -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <style>
+        .borderBottom {
+            border-bottom: 2px solid #cccccc;
+            margin-bottom: 5px;
+        }
+
+        .carouselNav .thumbnail {
+            border: none;
+            margin-top: 10px;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .qrImg {
+            width: 95px;
+            height: 95px;
+        }
+        .bottom10{
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        .footer{
+            background-color: #f9f9f9;
+        }
+        .footer ul,li{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        @media (max-width:468px) {
+            .searchBar{
+                width:160px !important;
+            } 
+            .form-group{
+                display: inline-block;
+            }
+        }
+        /* 使用媒体查询，兼容ipad端的显示 */
+        @media (min-width:768px) and (max-width: 1170px) {
+            .searchBar{
+                width:300px !important;
+            }   
+            .carouselNav img{
+                width:100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航条 -->
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#"><span class="glyphicon glyphicon-map-marker"></span> 北海 <span
+                                class="sr-only">(current)</span></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">选择城市 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">北京</a></li>
+                            <li><a href="#">上海</a></li>
+                            <li><a href="#">深圳</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">杭州</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">宿州</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">立即登陆</a></li>
+                    <li><a href="#">注册</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">我的美团 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">我的订单</a></li>
+                            <li><a href="#">我的收藏</a></li>
+                            <li><a href="#">抵用券</a></li>
+                            <li><a href="#">账户设置</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">手机APP</a></li>
+                    <li><a href="#">商家中心</a></li>
+                    <!-- 以下加了 class="hidden-sm"类名的，需要在ipad端隐藏 -->
+                    <li class="hidden-sm"><a href="#">美团规则</a></li>
+                    <li class="hidden-sm"><a href="#">网站导航</a></li>
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <!-- 居中容器 -->
+    <div class="container">
+        <!-- 先有行，再有列 -->
+        <div class="row">
+            <!-- 左边LOGO -->
+            <div class="col-lg-4 col-sm-4">
+                <a href=""><img src="./img/mt.png" alt=""></a>
+            </div>
+            <div class="col-lg-8 col-sm-8">
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control searchBar" placeholder="搜索商家和地点" style="width:400px;">
+                    </div>
+                    <button type="submit" class="btn btn-warning">搜索</button>
+                </form>
+            </div>
+        </div>
+        <div class="row borderBottom">
+            <div class="col-lg-4 hidden-sm">
+                <h4>商品分类</h4>
+            </div>
+            <div class="col-lg-8">
+                <ul class="nav nav-pills">
+                    <li role="presentation"><a href="#">美团外卖</a></li>
+                    <li role="presentation"><a href="#">猫眼电影</a></li>
+                    <li role="presentation"><a href="#">美团酒店民宿／公寓</a></li>
+                    <li role="presentation"><a href="#">商家入驻</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 下面的轮播分类区域 -->
+        <div class="row">
+            <!-- 左边分类列表 -->
+            <div class="col-lg-3 hidden-sm hidden-xs">
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="">美食</a></li>
+                    <li class="list-group-item"><a href="">外卖</a></li>
+                    <li class="list-group-item"><a href="">民宿</a></li>
+                    <li class="list-group-item"><a href="">酒店</a></li>
+                    <li class="list-group-item"><a href="">猫眼电影</a></li>
+                    <li class="list-group-item"><a href="">美食</a></li>
+                    <li class="list-group-item"><a href="">外卖</a></li>
+                    <li class="list-group-item"><a href="">民宿</a></li>
+                    <li class="list-group-item"><a href="">酒店</a></li>
+                    <li class="list-group-item"><a href="">猫眼电影</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <!-- 轮播图 -->
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img src="./img/p1.jpg" alt="...">
+                        </div>
+                        <div class="item">
+                            <img src="./img/p2.jpg" alt="...">
+                        </div>
+                        <div class="item">
+                            <img src="./img/p3.jpg" alt="...">
+                        </div>
+                        <div class="item">
+                            <img src="./img/p4.jpg" alt="...">
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <!-- 放两张图 -->
+                <div class="row carouselNav">
+                    <div class="col-lg-6 col-sm-6 col-xs-6">
+                        <a href="#" class="thumbnail">
+                            <img src="./img/n1.png" alt="...">
+                        </a>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-xs-6">
+                        <a href="#" class="thumbnail">
+                            <img src="./img/n2.jpg" alt="...">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 hidden-sm">
+                <div class="thumbnail center">
+                    <img src="./img/head.jpg" class="img-circle" alt="...">
+                    <br>
+                    <p>Hi！你好</p>
+                    <p>
+                        <a class="btn btn-default" href="#" role="button">注册</a>
+                    </p>
+                    <p>
+                        <a class="btn btn-default" href="#" role="button">立即登录</a>
+                    </p>
+                </div>
+                <div class="thumbnail center-block center">
+                    <img src="./img/qr.png" class="qrImg" alt="...">
+                    美团APP手机版<br>
+                    <span class="red">1元起</span> 吃喝玩乐
+                </div>
+            </div>
+        </div>
+
+        <!-- 民宿区域 -->
+        <div class="row">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    推荐民宿
+                    <a href="">广州</a>
+                    <a href="">三亚</a>
+                    <a href="">北京</a>
+                    <a href="">上海</a>
+                    <a href="">宿州</a>
+                </div>
+                <div class="panel-body">
+                    <div class="col-lg-4 col-sm-6 col-xs-6">
+                        <div class="thumbnail">
+                            <img src="./img/house1.jpg" alt="...">
+                            <div class="caption">
+                                <h4>长寿路地铁站5分钟 永庆坊 西关老胡同 传统小吃 波西米亚 共享大天台花园</h4>
+                                <p>沙面岛/上下九</p>
+                                <p class="text-warning">￥286</p>
+                            </div>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./img/house1.jpg" alt="...">
+                            <div class="caption">
+                                <h4>长寿路地铁站5分钟 永庆坊 西关老胡同 传统小吃 波西米亚 共享大天台花园</h4>
+                                <p>沙面岛/上下九</p>
+                                <p class="text-warning">￥286</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-6">
+                        <div class="thumbnail">
+                            <img src="./img/house1.jpg" alt="...">
+                            <div class="caption">
+                                <h4>长寿路地铁站5分钟 永庆坊 西关老胡同 传统小吃 波西米亚 共享大天台花园</h4>
+                                <p>沙面岛/上下九</p>
+                                <p class="text-warning">￥286</p>
+                            </div>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./img/house1.jpg" alt="...">
+                            <div class="caption">
+                                <h4>长寿路地铁站5分钟 永庆坊 西关老胡同 传统小吃 波西米亚 共享大天台花园</h4>
+                                <p>沙面岛/上下九</p>
+                                <p class="text-warning">￥286</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-6">
+                        <div class="thumbnail">
+                            <img src="./img/house1.jpg" alt="...">
+                            <div class="caption">
+                                <h4>长寿路地铁站5分钟 永庆坊 西关老胡同 传统小吃 波西米亚 共享大天台花园</h4>
+                                <p>沙面岛/上下九</p>
+                                <p class="text-warning">￥286</p>
+                            </div>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./img/house1.jpg" alt="...">
+                            <div class="caption">
+                                <h4>长寿路地铁站5分钟 永庆坊 西关老胡同 传统小吃 波西米亚 共享大天台花园</h4>
+                                <p>沙面岛/上下九</p>
+                                <p class="text-warning">￥286</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden-lg col-sm-6 col-xs-6">
+                        <div class="thumbnail">
+                            <img src="./img/house1.jpg" alt="...">
+                            <div class="caption">
+                                <h4>长寿路地铁站5分钟 永庆坊 西关老胡同 传统小吃 波西米亚 共享大天台花园</h4>
+                                <p>沙面岛/上下九</p>
+                                <p class="text-warning">￥286</p>
+                            </div>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="./img/house1.jpg" alt="...">
+                            <div class="caption">
+                                <h4>长寿路地铁站5分钟 永庆坊 西关老胡同 传统小吃 波西米亚 共享大天台花园</h4>
+                                <p>沙面岛/上下九</p>
+                                <p class="text-warning">￥286</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 美食区域 -->
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                猜你喜欢
+                <a href="">为你甄选最适合的</a>
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-3 col-sm-6 col-xs-6">
+                    <div class="thumbnail">
+                        <img src="./img/ms1.jpg" alt="...">
+                        <div class="caption">
+                            <h3>辣尚瘾（万达广场店）</h3>
+                            <p>侨港风情街</p>
+                            <p class="text-warning">￥10.1起</p>
+                        </div>
+                    </div>
+                    <div class="thumbnail">
+                        <img src="./img/ms2.jpg" alt="...">
+                        <div class="caption">
+                            <h3>辣尚瘾（万达广场店）</h3>
+                            <p>侨港风情街</p>
+                            <p class="text-warning">￥10.1起</p>
+                        </div>
+                    </div>
+                    <div class="thumbnail">
+                        <img src="./img/ms3.jpg" alt="...">
+                        <div class="caption">
+                            <h3>辣尚瘾（万达广场店）</h3>
+                            <p>侨港风情街</p>
+                            <p class="text-warning">￥10.1起</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-xs-6">
+                    <div class="thumbnail">
+                        <img src="./img/ms1.jpg" alt="...">
+                        <div class="caption">
+                            <h3>辣尚瘾（万达广场店）</h3>
+                            <p>侨港风情街</p>
+                            <p class="text-warning">￥10.1起</p>
+                        </div>
+                    </div>
+                    <div class="thumbnail">
+                        <img src="./img/ms2.jpg" alt="...">
+                        <div class="caption">
+                            <h3>辣尚瘾（万达广场店）</h3>
+                            <p>侨港风情街</p>
+                            <p class="text-warning">￥10.1起</p>
+                        </div>
+                    </div>
+                    <div class="thumbnail">
+                        <img src="./img/ms3.jpg" alt="...">
+                        <div class="caption">
+                            <h3>辣尚瘾（万达广场店）</h3>
+                            <p>侨港风情街</p>
+                            <p class="text-warning">￥10.1起</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3  col-sm-6 col-xs-6">
+                    <div class="thumbnail">
+                        <img src="./img/ms1.jpg" alt="...">
+                        <div class="caption">
+                            <h3>辣尚瘾（万达广场店）</h3>
+                            <p>侨港风情街</p>
+                            <p class="text-warning">￥10.1起</p>
+                        </div>
+                    </div>
+                    <div class="thumbnail">
+                        <img src="./img/ms2.jpg" alt="...">
+                        <div class="caption">
+                            <h3>辣尚瘾（万达广场店）</h3>
+                            <p>侨港风情街</p>
+                            <p class="text-warning">￥10.1起</p>
+                        </div>
+                    </div>
+                    <div class="thumbnail">
+                        <img src="./img/ms3.jpg" alt="...">
+                        <div class="caption">
+                            <h3>辣尚瘾（万达广场店）</h3>
+                            <p>侨港风情街</p>
+                            <p class="text-warning">￥10.1起</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3  col-sm-6 col-xs-6">
+                    <div class="thumbnail">
+                        <img src="./img/ms1.jpg" alt="...">
+                        <div class="caption">
+                            <h3>辣尚瘾（万达广场店）</h3>
+                            <p>侨港风情街</p>
+                            <p class="text-warning">￥10.1起</p>
+                        </div>
+                    </div>
+                    <div class="thumbnail">
+                        <img src="./img/ms2.jpg" alt="...">
+                        <div class="caption">
+                            <h3>辣尚瘾（万达广场店）</h3>
+                            <p>侨港风情街</p>
+                            <p class="text-warning">￥10.1起</p>
+                        </div>
+                    </div>
+                    <div class="thumbnail">
+                        <img src="./img/ms3.jpg" alt="...">
+                        <div class="caption">
+                            <h3>辣尚瘾（万达广场店）</h3>
+                            <p>侨港风情街</p>
+                            <p class="text-warning">￥10.1起</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 导航区域 -->
+        <div class="panel panel-default hidden-sm hidden-xs">
+            <div class="panel-body">
+                <h2>美团导航</h2>
+                <div class="row">
+                    <div class="col-lg-2">
+                        热门城市
+                    </div>
+                    <div class="col-lg-10 bottom10">
+                        <div class="col-lg-1"><a href="">上海</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                        <div class="col-lg-1"><a href="">无锡</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                        <div class="col-lg-1"><a href="">上海</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                        <div class="col-lg-1"><a href="">上海</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                        <!-- 下一行 -->
+                       <div class="col-lg-1"><a href="">上海</a></div>
+                       <div class="col-lg-1"><a href="">宿州</a></div>
+                       <div class="col-lg-1"><a href="">杭州</a></div>
+                       <div class="col-lg-1"><a href="">无锡</a></div>
+                       <div class="col-lg-1"><a href="">宿州</a></div>
+                       <div class="col-lg-1"><a href="">杭州</a></div>
+                       <div class="col-lg-1"><a href="">上海</a></div>
+                       <div class="col-lg-1"><a href="">宿州</a></div>
+                       <div class="col-lg-1"><a href="">杭州</a></div>
+                       <div class="col-lg-1"><a href="">上海</a></div>
+                       <div class="col-lg-1"><a href="">宿州</a></div>
+                       <div class="col-lg-1"><a href="">杭州</a></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2">
+                        热门分类
+                    </div>
+                    <div class="col-lg-10 bottom10">
+                        <div class="col-lg-1"><a href="">上海</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                        <div class="col-lg-1"><a href="">无锡</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                        <div class="col-lg-1"><a href="">上海</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                        <div class="col-lg-1"><a href="">上海</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                        <!-- 下一行 -->
+                        <div class="col-lg-1"><a href="">上海</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                        <div class="col-lg-1"><a href="">无锡</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                        <div class="col-lg-1"><a href="">上海</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                        <div class="col-lg-1"><a href="">上海</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2">
+                        周边热门
+                    </div>
+                    <div class="col-lg-10 bottom10">
+                        <div class="col-lg-1"><a href="">上海</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                        <div class="col-lg-1"><a href="">无锡</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                        <div class="col-lg-1"><a href="">上海</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                        <div class="col-lg-1"><a href="">上海</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                        <!-- 下一行 -->
+                        <div class="col-lg-1"><a href="">上海</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                        <div class="col-lg-1"><a href="">无锡</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                        <div class="col-lg-1"><a href="">上海</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                        <div class="col-lg-1"><a href="">上海</a></div>
+                        <div class="col-lg-1"><a href="">宿州</a></div>
+                        <div class="col-lg-1"><a href="">杭州</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <!-- 页脚的制作 -->
+      <div class="footer">
+        <div class="container">
+            <!-- 先有行再有列 -->
+            <div class="row">
+                <div class="col-lg-4 col-sm-4 col-xs-4">
+                    <h3>产品</h3>
+                    <ul>
+                        <li><a href="">测试</a></li>
+                        <li><a href="">栏目</a></li>
+                        <li><a href="">测试</a></li>
+                        <li><a href="">栏目</a></li>
+                        <li><a href="">测试</a></li>
+                        <li><a href="">栏目</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-sm-4 col-xs-4">
+                    <h3>产品</h3>
+                    <ul>
+                        <li><a href="">测试</a></li>
+                        <li><a href="">栏目</a></li>
+                        <li><a href="">测试</a></li>
+                        <li><a href="">栏目</a></li>
+                        <li><a href="">测试</a></li>
+                        <li><a href="">栏目</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-sm-4 col-xs-4">
+                    <h3>产品</h3>
+                    <ul>
+                        <li><a href="">测试</a></li>
+                        <li><a href="">栏目</a></li>
+                        <li><a href="">测试</a></li>
+                        <li><a href="">栏目</a></li>
+                        <li><a href="">测试</a></li>
+                        <li><a href="">栏目</a></li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+            课程作业<br>
+            我还好吗友情出版<br>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
